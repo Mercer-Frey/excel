@@ -49,7 +49,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
-      template: 'index.html',
+      template: './index.html',
+      filename: './index.html',
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd
