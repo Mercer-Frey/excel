@@ -5,9 +5,19 @@
         "browser": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "google"],
+    "extends": ["prettier", "google"],
     "rules": {
         "semi": "off",
-        "eol-last": "off"
-    }
+        "eol-last": "off",
+        "object-curly-spacing": "off",
+        "linebreak-style": "off",
+        "require-jsdoc": "off",
+        "indent": "off",
+        "comma-dangle": "off",
+        "space-before-blocks": "off",
+        "no-tabs": "off"
+    },
+    "plugins": [
+      "prettier"
+    ]
 }
