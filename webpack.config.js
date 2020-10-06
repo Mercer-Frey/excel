@@ -49,19 +49,21 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
-      template: './index.html',
-      filename: './index.html',
+      template: 'index.html',
+      filename: 'index.html',
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd
       }
     }),
-    // new CopyPlugin([
-    //   {
-    //     from: path.resolve(__dirname, 'src/favicon.ico'),
-    //     to: path.resolve(__dirname, 'dist')
-    //   }
-    // ]),
+    new CopyPlugin({
+      patterns: [
+        { 
+          from: 'favicon.ico',
+          to: path.resolve(__dirname, './dist/assets/favicon.ico') 
+        },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: filename('css')
     })
