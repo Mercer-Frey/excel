@@ -8,13 +8,13 @@ export function resizeHandler($root, e) {
 	let value
 	document.onmousemove = (event) => {
 		if (type === 'col') {
-			const delta = event.pageX - coords.right
-			value = coords.width + delta
-			$resizer.css({ [sideProp]: `-${delta}px` })
+			const delta = coords.right - event.pageX
+			value = coords.width - delta
+			$resizer.css({ [sideProp]: `${value >= 40 ? delta : false}px` })
 		} else {
-			const delta = event.pageY - coords.bottom
-			value = coords.height + delta
-			$resizer.css({ [sideProp]: `-${delta}px` })
+			const delta = coords.bottom - event.pageY
+			value = coords.height - delta
+			$resizer.css({ [sideProp]: `${value >= 20 ? delta : false}px` })
 		}
 	}
 	document.onmouseup = (event) => {
