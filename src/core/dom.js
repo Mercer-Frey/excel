@@ -1,4 +1,4 @@
-class Dom {
+export class Dom {
 	constructor(selector) {
 		this.$el =
 			typeof selector == 'string' ? document.querySelector(selector) : selector
@@ -13,8 +13,32 @@ class Dom {
 		}
 		return this.$el.outerHTML.trim()
 	}
+	text(text) {
+		if (typeof text === 'string') {
+			this.$el.textContent = text
+			return this
+		}
+		if (this.$el.tagName.toLowerCase() === 'input') {
+			return this.$el.value.trim()
+		}
+		return this.$el.textContent.trim()
+	}
+	id(parse) {
+		if (parse) {
+			const parsed = this.id().split(':')
+			return {
+				row: +parsed[0],
+				col: +parsed[1],
+			}
+		}
+		return this.data.id
+	}
 	clear() {
 		this.html('')
+		return this
+	}
+	focus() {
+		this.$el.focus()
 		return this
 	}
 	closest(selector) {
@@ -32,13 +56,25 @@ class Dom {
 	getCoords() {
 		return this.$el.getBoundingClientRect()
 	}
+	find(selector) {
+		return $(this.$el.querySelector(selector))
+	}
 	findAll(selector) {
 		return this.$el.querySelectorAll(selector)
+	}
+	addClass(className) {
+		this.$el.classList.add(className)
+		return this
+	}
+	removeClass(className) {
+		this.$el.classList.remove(className)
+		return this
 	}
 	css(styles = {}) {
 		Object.keys(styles).forEach((key, i, b) => {
 			this.$el.style[key] = styles[key]
 		})
+		return this
 	}
 	on(eventType, cb) {
 		this.$el.addEventListener(eventType, cb)
