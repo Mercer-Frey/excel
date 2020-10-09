@@ -21,13 +21,13 @@ export function resizeHandler($root, e) {
 		document.onmousemove = null
 		document.onmouseup = null
 		if (type === 'col') {
-			$parent.css({ width: `${value}px` })
+			$parent.css({ width: `${value >= 40 ? value : 40}px` })
 			$root
 				.findAll(`[data-col="${$parent.data.col}"]`)
-				.forEach((c) => (c.style.width = `${value}px`))
+				.forEach((c) => (c.style.width = `${value >= 40 ? value : 40}px`))
 			$resizer.css({ right: 0 })
 		} else {
-			$parent.css({ height: `${value}px` })
+			$parent.css({ height: `${value >= 20 ? value : 20}px` })
 			$resizer.css({ bottom: 0 })
 		}
 	}
