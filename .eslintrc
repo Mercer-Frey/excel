@@ -16,7 +16,8 @@
         "comma-dangle": "off",
         "space-before-blocks": "off",
         "no-tabs": "off",
-        "space-before-function-paren": "off"
+        "space-before-function-paren": "off",
+        "operator-linebreak": "off"
     },
     "plugins": [
       "prettier"
