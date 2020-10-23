@@ -4,10 +4,10 @@ import { Table } from '@/components/table/Table'
 import { Formula } from '@/components/formula/Formula'
 import { Header } from '@/components/header/Header'
 import { Toolbar } from '@/components/toolbar/Toolbar'
-import { createStore } from '@core/createStore'
 import { rootReducer } from '@redux/rootReducer'
 import { storage, debounce } from '@core/utils'
 import { normalizeInitialState } from '@redux/initialState'
+import { createStore } from '@core/store/createStore'
 
 function storageName(param) {
 	return `excel:${param}`
